@@ -1,0 +1,17 @@
+name: PR Labels
+
+on:
+  pull_requests:
+    types: [opened]
+    
+jobs:
+  mark_as_community:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark as Community if PR is from a fork
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        uses: actions-ecosystem/action-add-labels@v1
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.pull_request.number }}
+          labels: community     
