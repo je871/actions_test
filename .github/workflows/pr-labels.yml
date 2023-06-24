@@ -10,13 +10,12 @@ jobs:
     steps:
       - name: Mark as Community if PR is from a fork
         if: github.event.pull_request.head.repo.full_name == github.repository
-        uses: actions/github-script@v5
+      - uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.issues.addLabels({
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.issue.number,
               labels: ['Community']
             })
