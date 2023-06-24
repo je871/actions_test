@@ -9,13 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mark as Community if PR is from a fork
+        run: echo "Hello"
 #       if: github.event.pull_request.head.repo.full_name == github.repository
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['Community']
-            })
+#      - uses: actions/github-script@v6
+#        with:
+#          script: |
+#            github.rest.issues.addLabels({
+#              issue_number: context.issue.number,
+#              owner: context.repo.owner,
+#              repo: context.repo.repo,
+#              labels: ['Community']
+#           })
