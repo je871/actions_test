@@ -9,10 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mark as Community if PR is from a fork
-        run: echo ${{ github.event.pull_request.head.repo.full_name }}
-      - name: Another one
-        run: echo ${{ github.repository }}
-#       if: github.event.pull_request.head.repo.full_name == github.repository
+        if: github.event.pull_request.head.repo.full_name == github.repository
+        run: echo "OK"
+
 #      - uses: actions/github-script@v6
 #        with:
 #          script: |
