@@ -1,3 +1,4 @@
+# Paste your workflow YAML to this code editor
 name: PR Labels
 
 on:
@@ -10,7 +11,7 @@ jobs:
     steps:
       - name: Mark as Community if PR is from a fork
         if: github.event.pull_request.head.repo.full_name == github.repository
-      - uses: actions/github-script@v6
+        uses: actions/github-script@v6
         with:
           script: |
             github.rest.issues.addLabels({
