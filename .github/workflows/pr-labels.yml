@@ -2,13 +2,15 @@
 name: PR Labels
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened]
     
 jobs:
   mark_as_community:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Mark as Community if PR is from a fork
         if: github.event.pull_request.head.repo.full_name != github.repository
         uses: actions/github-script@v6
