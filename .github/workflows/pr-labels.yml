@@ -2,14 +2,13 @@
 name: PR Labels
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened]
     
 jobs:
   mark_as_community:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
+    permissions: write-all
     steps:
       - name: Mark as Community if PR is from a fork
         if: github.event.pull_request.head.repo.full_name != github.repository
